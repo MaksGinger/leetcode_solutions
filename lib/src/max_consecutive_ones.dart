@@ -22,8 +22,21 @@
 ///
 /// nums[i] is either 0 or 1.
 
-class MaxConsecutiveOnes {
-  int call(List<int> nums) {
-    return 5;
+class Solution {
+  int findMaxConsecutiveOnes(List<int> nums) {
+    var count = 0;
+    var maxCount = 0;
+    for (var i = 0; i < nums.length; i++) {
+      if (nums[i] == 1) {
+        count += 1;
+      }
+      if (nums[i] == 0 || i + 1 == nums.length) {
+        if (count > maxCount) {
+          maxCount = count;
+        }
+        count = 0;
+      }
+    }
+    return maxCount;
   }
 }
